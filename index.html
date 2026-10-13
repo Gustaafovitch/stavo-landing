@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STAVO - Vind de sport die bij jou past</title>
-    <!-- Google Fonts voor sportieve typografie -->
+    <title>STAVO - Jouw Persoonlijk 16-weken Sporttraject</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #ff6600; /* QuickFit Oranje */
-            --bg-dark: #0a0a0a;
-            --bg-light-dark: #141414;
+            --primary-hover: #ff8533;
+            --bg-dark: #070707;
+            --bg-light-dark: #121212;
+            --bg-card: #1a1a1a;
             --text-light: #f5f5f5;
-            --text-grey: #a0a0a0;
+            --text-grey: #b3b3b3;
         }
 
         * {
@@ -54,7 +56,7 @@
             z-index: 100;
         }
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary);
             font-family: 'Anton', sans-serif;
             display: flex;
@@ -63,40 +65,53 @@
         }
         .logo-sub {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
         /* --- HERO SECTIE --- */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 6rem 5% 4rem 5%;
+            padding: 0 5%;
             position: relative;
-            background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%), 
+            background: linear-gradient(135deg, rgba(7,7,7,0.95) 0%, rgba(7,7,7,0.6) 100%), 
                         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2000') center/cover;
         }
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
             line-height: 1.05;
             margin-bottom: 1.5rem;
-            color: var(--primary);
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            color: var(--text-light);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             max-width: 1200px;
         }
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            font-weight: 400;
-            color: var(--text-light);
+        .hero h1 span {
+            color: var(--primary);
         }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 650px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            color: #d1d1d1;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
         .btn {
             display: inline-block;
             background-color: var(--primary);
@@ -105,18 +120,29 @@
             font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
-            border: none;
+            border: 2px solid var(--primary);
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             border-radius: 4px;
+            text-align: center;
         }
         .btn:hover {
-            background-color: #fff;
-            color: var(--primary);
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-light);
+            box-shadow: none;
         }
 
         /* --- SCROLLING TEKST (Marquee) --- */
@@ -127,16 +153,14 @@
             overflow: hidden;
             white-space: nowrap;
             position: relative;
-            transform: rotate(-1.5deg);
-            margin: -1.5rem -2vw;
+            transform: rotate(-2deg);
+            margin: -2rem -2vw;
             width: 104vw;
-            z-index: 20;
+            z-index: 10;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .marquee-text {
             font-size: 2.5rem;
-            font-family: 'Anton', sans-serif;
-            text-transform: uppercase;
             display: inline-block;
             animation: scroll-left 25s linear infinite;
         }
@@ -149,80 +173,130 @@
         .method {
             padding: 8rem 5%;
             background-color: var(--bg-dark);
+            position: relative;
         }
-        .method h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 4rem;
+        .method-intro {
+            max-width: 800px;
+            margin-bottom: 5rem;
+        }
+        .method-intro h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             color: #fff;
+            margin-bottom: 1.5rem;
         }
+        .method-intro h2 span {
+            color: var(--primary);
+        }
+        .method-intro p {
+            font-size: 1.2rem;
+            color: var(--text-grey);
+            font-weight: 400;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
+        
+        /* Verbeterde Card Design met duidelijke hover */
         .card {
-            background-color: var(--bg-light-dark);
-            padding: 3rem 2rem;
-            border-bottom: 4px solid var(--bg-light-dark);
+            background-color: var(--bg-card);
+            padding: 3.5rem 2.5rem;
+            border: 2px solid #2a2a2a; /* Zichtbare border */
             border-radius: 8px;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .card:hover {
-            border-bottom-color: var(--primary);
-            transform: translateY(-10px);
-            background-color: #1a1a1a;
-        }
-        .card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
+        
         .card .step {
             font-family: 'Anton', sans-serif;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.1);
-            margin-bottom: -1rem;
-            display: block;
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            z-index: -1;
+            transition: all 0.4s ease;
+            line-height: 1;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            transition: color 0.3s;
         }
         .card p {
             color: var(--text-grey);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            transition: color 0.3s;
         }
 
-        /* --- LEAD MAGNET --- */
+        /* De Hover Effecten - Nu véél duidelijker! */
+        .card:hover {
+            border-color: var(--primary);
+            background-color: #222; /* Iets lichter op hover */
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(255, 102, 0, 0.15);
+        }
+        .card:hover .step {
+            color: rgba(255, 102, 0, 0.15); /* Oranje glow voor het nummer */
+            transform: scale(1.1) translate(-10px, 10px);
+        }
+        .card:hover h3 {
+            color: var(--primary);
+        }
+        .card:hover p {
+            color: #fff;
+        }
+
+        /* --- LEAD MAGNET (E-MAIL OPT-IN) --- */
         .lead-magnet {
-            padding: 8rem 5%;
-            text-align: center;
-            background: linear-gradient(to top, var(--bg-dark), var(--bg-light-dark));
+            padding: 7rem 5%;
+            background: linear-gradient(to right, var(--bg-light-dark), #1a1a1a);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+        .lead-magnet-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
         }
         .lead-magnet h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1rem;
             color: var(--primary);
         }
         .lead-magnet p {
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
             color: var(--text-grey);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
         .form-group {
             display: flex;
-            justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
         }
         .form-group input {
             flex: 1;
-            min-width: 250px;
+            min-width: 200px;
             padding: 1.2rem;
             font-size: 1rem;
             font-family: 'Montserrat', sans-serif;
             background: var(--bg-dark);
-            border: 1px solid #333;
+            border: 2px solid #333;
             color: #fff;
             border-radius: 4px;
+            transition: border-color 0.3s;
         }
         .form-group input:focus {
             outline: none;
@@ -230,6 +304,7 @@
         }
         .form-group button {
             width: auto;
+            white-space: nowrap;
         }
 
         /* --- FAQ SECTIE --- */
@@ -240,12 +315,13 @@
         }
         .faq h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             text-align: center;
         }
         .faq-item {
-            background: var(--bg-light-dark);
+            background: var(--bg-card);
             margin-bottom: 1rem;
+            border: 1px solid #2a2a2a;
             border-radius: 4px;
             overflow: hidden;
         }
@@ -260,7 +336,7 @@
             transition: background 0.3s;
         }
         .faq-question:hover {
-            background: #1f1f1f;
+            background: #222;
         }
         .faq-icon {
             color: var(--primary);
@@ -274,7 +350,6 @@
             color: var(--text-grey);
             transition: all 0.3s ease;
             opacity: 0;
-            overflow: hidden;
         }
         .faq-item.active .faq-answer {
             max-height: 500px;
@@ -323,26 +398,31 @@
 <body>
 
     <nav>
-        <div class="logo">STAVO <div class="logo-sub">Gent</div></div>
-        <a href="#gids" class="btn" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Gratis Gids</a>
+        <div class="logo">STAVO <div class="logo-sub">by QuickFit</div></div>
     </nav>
 
     <header class="hero">
-        <h1>VIND DE SPORT<br>DIE BIJ JOU PAST.</h1>
-        <p>Een persoonlijk begeleidingsprogramma in Gent. Vind de sport die écht bij je past en bouw duurzaam op in 16 weken.</p>
-        <div>
-            <a href="#gids" class="btn">Ontvang de Gratis Sportgids</a>
+        <h1>VIND DE SPORT<br><span>DIE BIJ JOU PAST.</span></h1>
+        <p>STAVO is een exclusief 1-op-1 begeleidingstraject van 16 weken in Gent. Wij helpen je de drempel over, bouwen je basis op, en gaan samen op zoek naar een sport die je écht volhoudt.</p>
+        
+        <div class="hero-buttons">
+            <a href="#traject" class="btn">Ontdek het Traject</a>
+            <a href="#gids" class="btn btn-outline">Gratis Sportgids</a>
         </div>
     </header>
 
     <section class="marquee-container">
         <div class="marquee-text">
-            &nbsp; / GEEN IDEE WAAR TE BEGINNEN? JE BENT NIET ALLEEN. / VIND WAT BIJ JE PAST. / GEEN DRUKKE FITNESS, WEL PERSOONLIJKE AANDACHT. / BEWEEG OP JOUW RITME. 
+            &nbsp; / GEEN IDEE WAAR TE BEGINNEN? JE BENT NIET ALLEEN. / JOUW 16-WEKEN TRAJECT / VIND WAT BIJ JE PAST / GEEN DRUKKE FITNESS, WEL PERSOONLIJKE AANDACHT / BEWEEG OP JOUW RITME / JOUW 16-WEKEN TRAJECT / VIND WAT BIJ JE PAST /
         </div>
     </section>
 
-    <section class="method">
-        <h2>DE 4 FASES VAN JOUW TRAJECT</h2>
+    <section id="traject" class="method">
+        <div class="method-intro">
+            <h2>HET 16-WEKEN <span>TRAJECT</span></h2>
+            <p>Dit is geen standaard fitnessabonnement. STAVO is een persoonlijk 1-op-1 traject waarin we in 4 fases toewerken naar een duurzaam, sportief leven. Jij staat centraal, wij gidsen je.</p>
+        </div>
+
         <div class="grid">
             <div class="card">
                 <span class="step">01</span>
@@ -357,7 +437,7 @@
             <div class="card">
                 <span class="step">03</span>
                 <h3>DE EERSTE STAP</h3>
-                <p>De eerste kennismaking bij een nieuwe club is vaak de hoogste drempel. Daarom gaan we persoonlijk mee. Je staat er nooit alleen voor.</p>
+                <p>De eerste kennismaking bij een nieuwe club is vaak de hoogste drempel. Daarom ga ik persoonlijk met je mee. Je staat er nooit alleen voor.</p>
             </div>
             <div class="card">
                 <span class="step">04</span>
@@ -368,9 +448,11 @@
     </section>
 
     <section id="gids" class="lead-magnet">
-        <h2>START JOUW ZOEKTOCHT HIER</h2>
-        <p>Wil je weten welke toegankelijke sportclubs en initiatieven er allemaal zijn in (regio) Gent? Vul je e-mail in en ontvang gratis het overzicht om inspiratie op te doen.</p>
-        <form class="form-group" onsubmit="event.preventDefault(); alert('Bedankt voor je aanmelding!');">
+        <div class="lead-magnet-content">
+            <h2>NOG NIET KLAAR VOOR EEN TRAJECT?</h2>
+            <p>Geen probleem. Wil je zelf alvast bekijken welke toegankelijke sportclubs en initiatieven er allemaal zijn in (regio) Gent? Vul je e-mail in en ontvang gratis ons overzicht om inspiratie op te doen.</p>
+        </div>
+        <form class="form-group" onsubmit="event.preventDefault(); alert('Bedankt! In de definitieve versie wordt de bezoeker nu toegevoegd aan je mailinglijst.');">
             <input type="email" placeholder="Jouw e-mailadres" required>
             <button type="submit" class="btn">Stuur mij de Gids</button>
         </form>
@@ -395,17 +477,17 @@
                 <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-                Omdat we niet focussen op een strak fitnessschema, maar samen op zoek gaan naar een beweegvorm die je écht leuk vindt. Als je iets graag doet, is volhouden veel makkelijker.
+                Omdat we niet focussen op een strak, dwingend fitnessschema, maar samen op zoek gaan naar een beweegvorm die je écht leuk vindt. Als je iets graag doet en de omgeving klopt, is volhouden veel makkelijker.
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question">
-                Gaan jullie echt mee naar de eerste kennismaking bij een nieuwe sportclub?
+                Ga je echt mee naar de eerste kennismaking bij een nieuwe sportclub?
                 <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-                Ja, absoluut! Die eerste stap is mentaal vaak de moeilijkste. We gaan mee als vertrouwenspersoon en bereiden het samen voor, zodat je je nooit ongemakkelijk voelt.
+                Ja, absoluut! Die eerste stap is psychologisch vaak de moeilijkste. Ik ga met je mee als vertrouwenspersoon, we bereiden het samen voor, zodat je je nooit ongemakkelijk of verloren hoeft te voelen.
             </div>
         </div>
 
@@ -415,22 +497,35 @@
                 <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-                Dat is heel normaal. We vermijden bewust de typische, drukke fitnesszalen en trainen in een rustige, oordeelvrije omgeving waar jouw comfort voorop staat.
+                Dat is heel normaal en je bent niet de enige. Tijdens dit traject vermijden we de typische, drukke fitnesszalen. We trainen buiten in de natuur of in een rustige, neutrale ruimte waar de focus 100% op jouw comfort ligt.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Wat als we na 16 weken nog steeds geen sport hebben gevonden die bij me past?
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Tijdens de 16 weken proberen we bewust heel uiteenlopende dingen. De kans is groot dat er een match is. Mocht dé sport er toch niet bijzitten, dan heb je wél een veel betere basisconditie, mobiliteit en zelfvertrouwen opgebouwd om met een gerust hart zelf verder te zoeken.
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-logo">
-            STAVO <span>Gent</span>
+            STAVO <span>by QuickFit</span>
         </div>
         <div class="footer-links">
             <a href="#">Privacybeleid</a>
-            <a href="mailto:info@stavo.be">Contact</a>
+            <a href="mailto:info@stavo.be">E-mail: info@stavo.be</a>
+            <a href="#">WhatsApp: +32 4XX XX XX XX</a>
+            <a href="#">Instagram</a>
         </div>
     </footer>
 
     <script>
+        // FAQ Accordeon Script
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
