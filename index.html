@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STAVO - Vind de sport die bij jou past</title>
-    <!-- Google Fonts voor sportieve/moderne typografie -->
+    <!-- Google Fonts voor sportieve typografie -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -73,19 +73,19 @@
 
         /* --- HERO SECTIE --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 5%;
+            padding: 6rem 5% 4rem 5%;
             position: relative;
             background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%), 
                         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2000') center/cover;
         }
         .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 8rem);
+            font-size: clamp(3rem, 7vw, 6.5rem);
             line-height: 1.05;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary);
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
             max-width: 1200px;
@@ -121,20 +121,22 @@
 
         /* --- SCROLLING TEKST (Marquee) --- */
         .marquee-container {
-            padding: 4rem 0;
+            padding: 3rem 0;
             background-color: var(--primary);
             color: var(--bg-dark);
             overflow: hidden;
             white-space: nowrap;
             position: relative;
-            transform: rotate(-2deg);
-            margin: -2rem -2vw;
+            transform: rotate(-1.5deg);
+            margin: -1.5rem -2vw;
             width: 104vw;
-            z-index: 100;
+            z-index: 20;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .marquee-text {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
             display: inline-block;
             animation: scroll-left 25s linear infinite;
         }
@@ -178,8 +180,8 @@
         .card .step {
             font-family: 'Anton', sans-serif;
             font-size: 3rem;
-            color: rgba(255, 255, 255, 0.05);
-            margin-bottom: -1.5rem;
+            color: rgba(255, 255, 255, 0.1);
+            margin-bottom: -1rem;
             display: block;
         }
         .card p {
@@ -187,7 +189,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- LEAD MAGNET (E-MAIL OPT-IN) --- */
+        /* --- LEAD MAGNET --- */
         .lead-magnet {
             padding: 8rem 5%;
             text-align: center;
@@ -262,3 +264,184 @@
         }
         .faq-icon {
             color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            max-height: 0;
+            padding: 0 2rem;
+            color: var(--text-grey);
+            transition: all 0.3s ease;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem 2rem;
+            opacity: 1;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 4rem 5%;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border-top: 1px solid #222;
+        }
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Anton', sans-serif;
+            color: var(--text-light);
+        }
+        .footer-logo span {
+            color: var(--primary);
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-grey);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">STAVO <div class="logo-sub">Gent</div></div>
+        <a href="#gids" class="btn" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Gratis Gids</a>
+    </nav>
+
+    <header class="hero">
+        <h1>VIND DE SPORT<br>DIE BIJ JOU PAST.</h1>
+        <p>Een persoonlijk begeleidingsprogramma in Gent. Vind de sport die écht bij je past en bouw duurzaam op in 16 weken.</p>
+        <div>
+            <a href="#gids" class="btn">Ontvang de Gratis Sportgids</a>
+        </div>
+    </header>
+
+    <section class="marquee-container">
+        <div class="marquee-text">
+            &nbsp; / GEEN IDEE WAAR TE BEGINNEN? JE BENT NIET ALLEEN. / VIND WAT BIJ JE PAST. / GEEN DRUKKE FITNESS, WEL PERSOONLIJKE AANDACHT. / BEWEEG OP JOUW RITME. 
+        </div>
+    </section>
+
+    <section class="method">
+        <h2>DE 4 FASES VAN JOUW TRAJECT</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="step">01</span>
+                <h3>INTAKE & BASIS</h3>
+                <p>We starten exact op jouw huidige niveau, zonder oordeel. We werken aan algemene kracht en mobiliteit op jouw tempo, in een veilige omgeving buiten de drukke fitnesszalen.</p>
+            </div>
+            <div class="card">
+                <span class="step">02</span>
+                <h3>SPORTEN ONTDEKKEN</h3>
+                <p>Zodra je basisvertrouwen groeit, testen we samen verschillende sporten in en rond Gent. We zoeken gericht naar wat écht aansluit bij jouw persoonlijkheid en levensstijl.</p>
+            </div>
+            <div class="card">
+                <span class="step">03</span>
+                <h3>DE EERSTE STAP</h3>
+                <p>De eerste kennismaking bij een nieuwe club is vaak de hoogste drempel. Daarom gaan we persoonlijk mee. Je staat er nooit alleen voor.</p>
+            </div>
+            <div class="card">
+                <span class="step">04</span>
+                <h3>VERANKERING</h3>
+                <p>Na 16 weken ben je sterker, zelfzekerder en heb je een sportcommunity gevonden waar je je thuis voelt. Je bent klaar om zelfstandig door te gaan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gids" class="lead-magnet">
+        <h2>START JOUW ZOEKTOCHT HIER</h2>
+        <p>Wil je weten welke toegankelijke sportclubs en initiatieven er allemaal zijn in (regio) Gent? Vul je e-mail in en ontvang gratis het overzicht om inspiratie op te doen.</p>
+        <form class="form-group" onsubmit="event.preventDefault(); alert('Bedankt voor je aanmelding!');">
+            <input type="email" placeholder="Jouw e-mailadres" required>
+            <button type="submit" class="btn">Stuur mij de Gids</button>
+        </form>
+    </section>
+
+    <section class="faq">
+        <h2>VEELGESTELDE VRAGEN</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Moet ik al een basisconditie hebben om te starten?
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Nee, we starten exact op jouw huidige niveau, al is dat in het begin een rustige wandeling. Het traject past zich aan jou aan, niet andersom. Iedereen kan instappen.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Ik heb al vaak geprobeerd te sporten en geef altijd op. Waarom zou dit wel werken?
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Omdat we niet focussen op een strak fitnessschema, maar samen op zoek gaan naar een beweegvorm die je écht leuk vindt. Als je iets graag doet, is volhouden veel makkelijker.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Gaan jullie echt mee naar de eerste kennismaking bij een nieuwe sportclub?
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Ja, absoluut! Die eerste stap is mentaal vaak de moeilijkste. We gaan mee als vertrouwenspersoon en bereiden het samen voor, zodat je je nooit ongemakkelijk voelt.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Ik voel me onzeker in sportkledij en in een fitnessomgeving.
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Dat is heel normaal. We vermijden bewust de typische, drukke fitnesszalen en trainen in een rustige, oordeelvrije omgeving waar jouw comfort voorop staat.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            STAVO <span>Gent</span>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacybeleid</a>
+            <a href="mailto:info@stavo.be">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if(!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
